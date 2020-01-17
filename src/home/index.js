@@ -1,5 +1,9 @@
-import HomeScreen from "./HomeContainer";
+import reducer from './reducer';
+import { ROOT as KEY_REDUCER } from './storeKeys';
+import HomeScreen from './HomeContainer';
 
 export {
-    HomeScreen
-}
+    reducer,
+    KEY_REDUCER,
+    HomeScreen,
+};
