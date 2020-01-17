@@ -9,8 +9,9 @@ class HomeComponent extends React.PureComponent {
 
         return (
             <Container>
+              <h1 style={{ fontSize: 50, marginBottom: 30 }}>Vivre En Bretagne</h1>
               {news.map(article => (
-                <Card>
+                <Card key={article.id}>
                   <h1>{article.title}</h1>
                   <p>{article.description}</p>
                   {article.urlToImage && <img style={{ maxHeight: 100, width: 'auto' }} src={article.urlToImage} />}
