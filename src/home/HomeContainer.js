@@ -7,6 +7,7 @@ import * as actionCreators from './actionCreators';
 
 const mapStateToProps = (state) => ({
     news: selectors.news(state),
+    currentWeather: selectors.currentWeather(state)
 });
 
 class HomeContainer extends React.Component {
@@ -14,14 +15,16 @@ class HomeContainer extends React.Component {
     async componentDidMount(): void {
         const { dispatch } = this.props;
         await dispatch(actionCreators.loadNews());
+        await dispatch(actionCreators.currentWeather());
     }
 
     render() {
-        const { news } = this.props;
+        const { news, currentWeather } = this.props;
 
         return (
             <HomeComponent
                 news={news}
+                currentWeather={currentWeather}
             />
         );
     }
@@ -29,7 +32,8 @@ class HomeContainer extends React.Component {
 
 HomeContainer.propTypes = {
     dispatch: PropTypes.any.isRequired,
-    news: PropTypes.array.isRequired
+    news: PropTypes.array.isRequired,
+    currentWeather: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps)(HomeContainer);
