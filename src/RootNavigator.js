@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Menu } from "antd";
+import styled from "styled-components";
 import { HomeScreen } from "./home";
 import { PresentationScreen } from "./presentation";
 import { ContactScreen } from "./contact";
@@ -15,6 +16,8 @@ class RootNavigator extends React.PureComponent {
         return (
             <Router>
                 <div>
+                    <HeaderImage src="https://frederic-pactat.com/wp-content/uploads/2017/01/201701-bretagne.jpg" />
+                    <HeaderTitle>Vivre En Bretagne</HeaderTitle>
                     <Menu mode="horizontal">
                         <Menu.Item>
                             <Link to={PATH_HOME}>Home</Link>
@@ -48,5 +51,19 @@ class RootNavigator extends React.PureComponent {
         );
     }
 }
+
+const HeaderImage = styled.img`
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+`;
+
+const HeaderTitle = styled.h1`
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: 60px;
+    left: 5;
+`;
 
 export default RootNavigator;
