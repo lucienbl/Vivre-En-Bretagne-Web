@@ -59,6 +59,7 @@ const HeaderImage = styled.img`
 `;
 
 const HeaderTitle = styled.h1`
+    margin-left: 5%;
     font-size: 50px;
     color: white;
     position: absolute;
