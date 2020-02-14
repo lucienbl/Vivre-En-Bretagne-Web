@@ -12,16 +12,41 @@ const PATH_PRESENTATION = "/presentation";
 const PATH_PORTFOLIO = "/portfolio";
 const PATH_CONTACT = "/contact";
 
-class RootNavigator extends React.PureComponent {
+class RootNavigator extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            muted: true
+        }
+    }
+
+    _toggleMute = () => this.setState({ muted: !this.state.muted });
+
+
     render() {
+        const { muted } = this.state;
+
         return (
             <Router>
                 <div>
-                    <video height="200" style={{ width: "100%", objectFit: "fill" }} autoPlay loop>
+                    <video height="200" style={{ width: "100%", objectFit: "cover" }} autoPlay loop muted={muted}>
                         <source src={HeadVideo} type="video/mp4" />
                         Your browser does not support the video tag.
-                    </video> 
+                    </video>
                     <HeaderTitle>Vivre En Bretagne</HeaderTitle>
+                    <SoundControlContainer>
+                        {muted ? (
+                          <i onClick={this._toggleMute} className="material-icons" style={{ color: "white" }}>
+                              volume_up
+                          </i>
+                        ) : (
+                          <i onClick={this._toggleMute} className="material-icons" style={{ color: "white" }}>
+                              volume_off
+                          </i>
+                        )}
+                    </SoundControlContainer>
                     <Menu mode="horizontal">
                         <Menu.Item>
                             <Link to={PATH_HOME}>Home</Link>
@@ -56,10 +81,11 @@ class RootNavigator extends React.PureComponent {
     }
 }
 
-const HeaderImage = styled.img`
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
+const SoundControlContainer = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
 `;
 
 const HeaderTitle = styled.h1`
