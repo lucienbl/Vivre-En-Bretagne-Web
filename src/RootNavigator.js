@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { HomeScreen } from "./home";
 import { PresentationScreen } from "./presentation";
 import { ContactScreen } from "./contact";
+import HeadVideo from "./assets/head_video.mp4";
 
 const PATH_HOME = "/";
 const PATH_PRESENTATION = "/presentation";
@@ -16,7 +17,10 @@ class RootNavigator extends React.PureComponent {
         return (
             <Router>
                 <div>
-                    <HeaderImage src="https://frederic-pactat.com/wp-content/uploads/2017/01/201701-bretagne.jpg" />
+                    <video height="200" style={{ width: "100%", objectFit: "fill" }} autoPlay loop>
+                        <source src={HeadVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video> 
                     <HeaderTitle>Vivre En Bretagne</HeaderTitle>
                     <Menu mode="horizontal">
                         <Menu.Item>
