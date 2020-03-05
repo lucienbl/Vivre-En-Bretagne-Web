@@ -9,7 +9,6 @@ import HeadVideo from "./assets/head_video.mp4";
 
 const PATH_HOME = "/";
 const PATH_PRESENTATION = "/presentation";
-const PATH_PORTFOLIO = "/portfolio";
 const PATH_CONTACT = "/contact";
 
 class RootNavigator extends React.Component {
@@ -49,24 +48,18 @@ class RootNavigator extends React.Component {
                     </SoundControlContainer>
                     <Menu mode="horizontal">
                         <Menu.Item>
-                            <Link to={PATH_HOME}>Home</Link>
+                            <Link to={PATH_HOME}>Accueil</Link>
                         </Menu.Item>
                         <Menu.Item>
                             <Link to={PATH_PRESENTATION}>Presentation</Link>
                         </Menu.Item>
                         <Menu.Item>
-                            <Link to={PATH_PORTFOLIO}>Portfolio</Link>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <Link to={PATH_CONTACT}>Contact</Link>
+                            <Link to={PATH_CONTACT}>Nous contacter</Link>
                         </Menu.Item>
                     </Menu>
                     <Switch>
                         <Route path={PATH_PRESENTATION}>
                             <PresentationScreen />
-                        </Route>
-                        <Route path={PATH_PORTFOLIO}>
-                            <HomeScreen />
                         </Route>
                         <Route path={PATH_CONTACT}>
                             <ContactScreen />
