@@ -76,6 +76,11 @@ class ContactComponent extends React.PureComponent {
 
 const Container = styled.div`
     padding: 5%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `;
 
 const ContactForm = styled(Form)`

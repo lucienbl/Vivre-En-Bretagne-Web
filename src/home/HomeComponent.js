@@ -12,11 +12,15 @@ class HomeComponent extends React.PureComponent {
       return (
         <Container onClick={() => {}}>
           {currentWeather.main && (
-            <WeatherContainer>
-              <WeatherTemperatureTitle>{Math.round(currentWeather.main.temp)}°C</WeatherTemperatureTitle>
-              <WeatherIcon src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} />
-            </WeatherContainer>
+            <>
+              <Title>La Météo</Title>
+              <Weather>
+                <WeatherTemperatureTitle>{Math.round(currentWeather.main.temp)}°C</WeatherTemperatureTitle>
+                <WeatherIcon src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} />
+              </Weather>
+            </>
           )}
+          <Title>Les Actualités</Title>
           {news.map(article => (
             <Article key={article.id}>
               {article.urlToImage && <ArticleImage src={article.urlToImage} />}
@@ -33,7 +37,14 @@ class HomeComponent extends React.PureComponent {
 
 const Container = styled.div`
     flex: 1;
-    padding: 40px 5% 5% 5%;
+    padding: 50px 5% 5% 5%;
+`;
+
+const Title = styled.h1`
+  font-size: 50px;
+  text-align: center;
+  color: black;
+  float: left;
 `;
 
 const Article = styled.div`
@@ -48,33 +59,40 @@ const Article = styled.div`
   cursor: pointer;
 `;
 
+const Weather = styled.div`
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+`;
+
 const ArticleImage = styled.img`
   max-height: 200px;
   width: auto;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const ArticleContentContainer = styled.div`
   margin: 20px;
 `;
 
-const WeatherContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-`;
-
 const WeatherTemperatureTitle = styled.h1`
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
+  color: #666;
 `;
 
 const WeatherIcon = styled.img`
-  margin-left: 20px;
-  margin-top: -20px;
+  margin-left: 10px;
+  margin-top: -12px;
+  height: 70px;
+  width: auto;
+  opacity: 0.8;
 `;
 
 HomeComponent.propTypes = {
