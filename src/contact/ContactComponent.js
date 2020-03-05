@@ -12,8 +12,8 @@ class ContactComponent extends React.PureComponent {
                 console.log('Received values of form: ', values);
                 resetFields();
                 notification.success({
-                    message: 'Success',
-                    description: `Your message has successfully been sent to ${values.email}!`
+                    message: 'Succès',
+                    description: `Votre message a bien été envoyé!`
                 });
             }
         });
@@ -24,11 +24,11 @@ class ContactComponent extends React.PureComponent {
 
         return (
             <Container>
-                <h1>Contact</h1>
+                <h1>Nous contacter</h1>
                 <ContactForm onSubmit={this._handleClickSubmit}>
                     <Form.Item>
                         {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Please input your name!' }],
+                            rules: [{ required: true, message: 'Veuillez entrer votre nom!' }],
                         })(
                             <Input
                                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -41,11 +41,11 @@ class ContactComponent extends React.PureComponent {
                             rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your email!'
+                                    message: 'Veuillez entrer votre adresse email!'
                                 },
                                 {
                                     type: 'email',
-                                    message: 'The input is not a valid email!',
+                                    message: 'L\'adresse email n\'est pas valide!',
                                 }
                             ],
                         },)(
@@ -58,14 +58,14 @@ class ContactComponent extends React.PureComponent {
                     </Form.Item>
                     <Form.Item>
                         {getFieldDecorator('message', {
-                            rules: [{ required: true, message: 'Please input your message!' }],
+                            rules: [{ required: true, message: 'Merci d\'entrer un message!' }],
                         })(
                             <Input.TextArea placeholder="Message" />,
                         )}
                     </Form.Item>
                     <Form.Item>
                         <ContactFormButton type="primary" htmlType="submit">
-                            Send
+                            Envoyer
                         </ContactFormButton>
                     </Form.Item>
                 </ContactForm>
