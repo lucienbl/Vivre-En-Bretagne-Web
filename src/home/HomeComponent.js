@@ -7,8 +7,6 @@ class HomeComponent extends React.PureComponent {
     render() {
       const { news, currentWeather } = this.props;
 
-      console.log(currentWeather);
-
       return (
         <Container onClick={() => {}}>
           {currentWeather.main && (
@@ -22,7 +20,7 @@ class HomeComponent extends React.PureComponent {
           )}
           <Title>Les Actualités</Title>
           {news.map(article => (
-            <Article key={article.id}>
+            <Article onClick={() => window.open(article.url)} key={article.id}>
               {article.urlToImage && <ArticleImage src={article.urlToImage} />}
               <ArticleContentContainer>
                 <h1>{article.title}</h1>
