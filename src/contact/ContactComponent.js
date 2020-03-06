@@ -1,6 +1,67 @@
 import React from 'react';
 import styled from "styled-components";
-import { Button, Checkbox, Form, Icon, Input, notification } from "antd";
+import {Button, Checkbox, Form, Icon, Input, notification, Table, Tag} from "antd";
+
+const columns = [
+    {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <span>{text}</span>,
+    },
+    {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+    },
+    {
+        title: 'Roles',
+        key: 'roles',
+        dataIndex: 'roles',
+        render: tags => (
+          <span>
+        {tags.map(tag => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'developer') {
+                color = 'volcano';
+            }
+            return (
+              <Tag color={color} key={tag}>
+                  {tag.toUpperCase()}
+              </Tag>
+            );
+        })}
+      </span>
+        ),
+    },
+];
+
+const data = [
+    {
+        key: '1',
+        name: 'Victor Follorou',
+        email: 'victor.folloroulannion@gmail.com',
+        roles: ['developer', 'designer'],
+    },
+    {
+        key: '2',
+        name: 'Ewen Bozec',
+        email: 'ewen.bozec@gmail.com',
+        roles: ['developer', 'designer'],
+    },
+    {
+        key: '3',
+        name: 'Lucas Neger',
+        email: 'lucas.neger22@gmail.com',
+        roles: ['developer'],
+    },
+    {
+        key: '4',
+        name: 'Lucien Blunk-Lallet',
+        email: 'lucien.blunk.lallet@gmail.com',
+        roles: ['developer'],
+    },
+];
 
 class ContactComponent extends React.PureComponent {
 
@@ -69,6 +130,9 @@ class ContactComponent extends React.PureComponent {
                         </ContactFormButton>
                     </Form.Item>
                 </ContactForm>
+                <br />
+                <h1>Credits</h1>
+                <Table columns={columns} dataSource={data} />
             </Container>
         );
     }

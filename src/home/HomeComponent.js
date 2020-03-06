@@ -9,6 +9,10 @@ class HomeComponent extends React.PureComponent {
 
       return (
         <Container onClick={() => {}}>
+          <Title>Présentation</Title>
+          <Presentation>
+            La Bretagne, une région située à l’extrême ouest de la France, est une péninsule vallonnée qui s’avance dans l’océan Atlantique. Sa côte sauvage s’étend sur des kilomètres : on y trouve des stations balnéaires comme la ville chic de Dinard ou la ville fortifiée de Saint-Malo, construite sur la Manche. La côte de granit rose est un lieu convoité pour les teintes uniques que prennent le sable et les roches. La Bretagne dispose également d’un grand nombre de menhirs (sorte de mégalithe) datant de la préhistoire.
+          </Presentation>
           {currentWeather.main && (
             <>
               <Title>La Météo</Title>
@@ -39,8 +43,9 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
+  width: 100%;
   font-size: 50px;
-  text-align: center;
+  text-align: left;
   color: black;
   float: left;
 `;
@@ -91,6 +96,10 @@ const WeatherIcon = styled.img`
   height: 70px;
   width: auto;
   opacity: 0.8;
+`;
+
+const Presentation = styled.div`
+  margin-bottom: 30px;
 `;
 
 HomeComponent.propTypes = {
